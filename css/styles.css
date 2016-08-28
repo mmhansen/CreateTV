@@ -1,0 +1,129 @@
+html, body {
+  margin: 0;
+  padding: 0; }
+
+body {
+  background: #E8F5E9; }
+
+.search-div {
+  text-align: center;
+  margin-bottom: 20px; }
+
+input {
+  margin: 10px;
+  width: 450px;
+  padding: 10px; }
+
+html {
+  margin: 20px;
+  text-align: center; }
+
+[class^="stream-"] {
+  margin: 20px 20px;
+  display: inline-block; }
+  [class^="stream-"] [class^="content-stream-"] {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    border: 0px solid black;
+    width: 400px;
+    height: 225px; }
+    [class^="stream-"] [class^="content-stream-"] > img {
+      width: 100%;
+      height: 100%;
+      margin: auto; }
+    [class^="stream-"] [class^="content-stream-"] [class^="profile-content-stream-"] {
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      z-index: 99; }
+      [class^="stream-"] [class^="content-stream-"] [class^="profile-content-stream-"] > img {
+        border-radius: 100%;
+        border: 1px solid black;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        height: 90px;
+        width: 90px; }
+    [class^="stream-"] [class^="content-stream-"] .profie-icon-hover {
+      display: none;
+      z-index: 999;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 100%;
+      width: 90px;
+      height: 90px;
+      position: absolute;
+      top: -30px;
+      left: -30px; }
+      [class^="stream-"] [class^="content-stream-"] .profie-icon-hover .glyphicon-share {
+        color: yellow;
+        margin-top: 10px;
+        margin-left: 4px;
+        font-size: 4.5em;
+        z-index: 9999; }
+        [class^="stream-"] [class^="content-stream-"] .profie-icon-hover .glyphicon-share:hover {
+          cursor: pointer; }
+    [class^="stream-"] [class^="content-stream-"] [class^="name-content-stream-"] {
+      background: black;
+      opacity: 0.6;
+      padding: 5px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center; }
+      [class^="stream-"] [class^="content-stream-"] [class^="name-content-stream-"] > span {
+        color: white;
+        font-size: 1.3em;
+        font-family: "Lora", serif;
+        text-transform: uppercase;
+        letter-spacing: 0.07em; }
+    [class^="stream-"] [class^="content-stream-"] .glyphicon-play {
+      color: white;
+      opacity: 0.8;
+      font-size: 6em;
+      position: absolute;
+      left: 150px;
+      top: 70px;
+      z-index: 99; }
+      [class^="stream-"] [class^="content-stream-"] .glyphicon-play:hover {
+        animation-name: play-button-scale;
+        animation-duration: 500ms;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        cursor: pointer; }
+    [class^="stream-"] [class^="content-stream-"] .hover-info-overlay {
+      display: none;
+      width: 400px;
+      height: 225px;
+      background: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: center;
+      color: white;
+      font: "Lato", sans-serif;
+      padding: 0px 50px;
+      font-size: 1.5em;
+      font-weight: 400; }
+      [class^="stream-"] [class^="content-stream-"] .hover-info-overlay .status {
+        margin-top: 20px; }
+      [class^="stream-"] [class^="content-stream-"] .hover-info-overlay .viewers {
+        position: absolute;
+        bottom: 10px;
+        left: 100px; }
+
+/* hover text more info */
+[class^="content-stream-"]:hover .hover-info-overlay {
+  display: block; }
+
+[class^="profile-content-stream-"]:hover .profie-icon-hover {
+  display: block; }
+
+@keyframes play-button-scale {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.5); } }
+
+/*# sourceMappingURL=styles.css.map */
