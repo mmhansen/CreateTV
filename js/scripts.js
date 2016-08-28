@@ -16,6 +16,7 @@ var streams,
 	videoLink,
 	selfLink,
 	thumbnail;
+var activeChannels = [];
 
 
 $.getJSON(getChannels, function(data){
@@ -36,8 +37,8 @@ $.getJSON(getChannels, function(data){
 
 			thumbnail = channelHeld['preview']['medium'];
 
+			activeChannels.push(displayName);
 
-		// console.log('display_name : '+ displayName + '\nviewers : ' + viewers);
 		// console.log(channelHeld);
 
 		showStreams(prop);
@@ -48,23 +49,19 @@ $.getJSON(getChannels, function(data){
 
 function showStreams(num){
 
-$('.stream-location').append("<div class='stream-" + num +"'></div>");
+$('.stream-location').append("<div id='name-"+ displayName +"' class='stream-" + num +"'></div>");
 
 $('.stream-'+num).append("<div class='content-stream-" + num + "'></div>");
 
 $('.content-stream-'+num).append("<img src='" + thumbnail + "'>");
 
-$('.content-stream-'+num).append("<div class='profile-content-stream-" + num + "'><img src=" + logo + "></div>");
-
-$('.content-stream-'+num).append("<div class='glyphicon glyphicon-play'></div>");
+$('.content-stream-'+num).append("<a target ='_blank' href='https://player.twitch.tv/?volume=0.5&channel=" + displayName + "'><div class='glyphicon glyphicon-play'></div></a>");
 
 $('.content-stream-'+num).append("<div class='name-content-stream-" + num + "'><span>" + displayName + "</span></div>");
 
 trimStatus()
 
-$('.content-stream-'+num).append("<div class='profie-icon-hover'><span class='glyphicon glyphicon-share'></span></div>")
-
-$('.content-stream-'+num).append("<div class='hover-info-overlay'><p class='status'>" + status +"</p><p class='viewers'>Current Views : " + viewers + "</p></div>");
+$('.content-stream-'+num).append("<div class='hover-info-overlay'><p class='status'>" + status +"</p><p class='viewers'>" + viewers + " people are watching.</p></div>");
       
 }
 
@@ -76,7 +73,28 @@ function trimStatus(){
 
 
 
+//////////////////////////////////////
+// Search and display by channel ID //
+//////////////////////////////////////
 
+$('input').on('input', function(){
+	var searchTerm = $('input').val();
+	var count = 1;
+	// display only those that contain or match searchTerm
+	
+	// activeChannels
+
+      
+
+
+
+	console.log(searchResults);
+})
+
+
+/////////////////////////////////////////////////
+// Display first 20, and have load more button //
+/////////////////////////////////////////////////
 
 
 // end doc ready
