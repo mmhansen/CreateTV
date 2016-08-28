@@ -50,46 +50,20 @@ $.getJSON(getChannels, function(data){
 function showStreams(num){
 
 $('.stream-location').append("<div id='name-"+ displayName +"' class='stream-" + num +"'></div>");
-
-$('.stream-'+num).append("<div class='content-stream-" + num + "'></div>");
-
-$('.content-stream-'+num).append("<img src='" + thumbnail + "'>");
-
-$('.content-stream-'+num).append("<a target ='_blank' href='https://player.twitch.tv/?volume=0.5&channel=" + displayName + "'><div class='glyphicon glyphicon-play'></div></a>");
-
-$('.content-stream-'+num).append("<div class='name-content-stream-" + num + "'><span>" + displayName + "</span></div>");
-
-trimStatus()
-
-$('.content-stream-'+num).append("<div class='hover-info-overlay'><p class='status'>" + status +"</p><p class='viewers'>" + viewers + " people are watching.</p></div>");
-      
-}
-
-function trimStatus(){
-	// max 25 char
-	status = status.slice(0, 25) + "...";
+	// appending to above
+	$('.stream-'+num).append("<div class='content-stream-" + num + "'></div>");
+		// appending to above
+			// content divs
+		$('.content-stream-'+num).append("<img src='" + thumbnail + "'>");
+		$('.content-stream-'+num).append("<div class='name-content-stream-" + num + "'><span>" + displayName + "</span></div>");
+			// hover divs
+		$('.content-stream-'+num).append("<div class='content-hover-" + num + "'></div>")
+			$('.content-hover-'+num).append("<a target ='_blank' href='https://player.twitch.tv/?volume=0.5&channel=" + displayName + "'><div class='glyphicon glyphicon-play'></div></a>");	
+			$('.content-hover-'+num).append("<div class='hover-info-overlay'><span class='glyphicon glyphicon glyphicon-facetime-video'></span><span class='viewers'>" + viewers +"</span></div>");
+	      
 }
 
 
-
-
-//////////////////////////////////////
-// Search and display by channel ID //
-//////////////////////////////////////
-
-$('input').on('input', function(){
-	var searchTerm = $('input').val();
-	var count = 1;
-	// display only those that contain or match searchTerm
-	
-	// activeChannels
-
-      
-
-
-
-	console.log(searchResults);
-})
 
 
 /////////////////////////////////////////////////

@@ -1,39 +1,38 @@
 @font-face {
   font-family: "Twitch";
   src: local("DIMIR___.TTF") format("truetype"); }
-html, body {
+html, body, div {
   margin: 0;
   padding: 0; }
 
-h1 {
-  font-family: sans-serif;
-  font-family: "Twitch";
-  font-size: 4em; }
-
 body {
-  background: #E8F5E9; }
+  background: #FAFAFA; }
 
-.search-div {
-  text-align: center;
+.header {
+  background: #00BCD4;
+  margin: 0;
+  padding: 0;
   margin-bottom: 20px; }
 
-input {
-  margin: 10px;
-  width: 450px;
-  padding: 10px; }
+h1 {
+  margin: 0;
+  font-family: "Lato";
+  font-weight: 400;
+  font-size: 4em;
+  color: white;
+  padding: 40px; }
 
 html {
-  margin: 20px;
   text-align: center; }
 
 [class^="stream-"] {
   margin: 20px 20px;
-  display: inline-block; }
+  display: inline-block;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3), -3px 2px 15px rgba(0, 0, 0, 0.3), -3px 2px 15px rgba(0, 0, 0, 0.3); }
   [class^="stream-"] [class^="content-stream-"] {
     padding: 0;
     margin: 0;
     position: relative;
-    border: 0px solid black;
     width: 400px;
     height: 225px; }
     [class^="stream-"] [class^="content-stream-"] > img {
@@ -41,8 +40,8 @@ html {
       height: 100%;
       margin: auto; }
     [class^="stream-"] [class^="content-stream-"] [class^="name-content-stream-"] {
-      background: black;
-      opacity: 0.6;
+      background: #00838F;
+      opacity: 1;
       padding: 5px;
       position: absolute;
       bottom: 0;
@@ -54,60 +53,75 @@ html {
         font-family: "Lora", serif;
         text-transform: uppercase;
         letter-spacing: 0.07em; }
-    [class^="stream-"] [class^="content-stream-"] .glyphicon-play {
-      color: white;
-      font-size: 4em;
-      position: absolute;
-      left: 165px;
-      top: 80px;
-      z-index: 99;
-      animation-name: play-button-scale-down;
+
+[class^="stream-"] [class^="content-stream-"] [class^="content-hover-"] {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  width: 400px;
+  height: 225px;
+  background: black; }
+  [class^="stream-"] [class^="content-stream-"] [class^="content-hover-"] .hover-info-overlay {
+    width: 400px;
+    height: 225px;
+    background: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: white;
+    font: "Lato", sans-serif;
+    padding: 0px 50px;
+    font-size: 3.0em;
+    font-weight: 400;
+    z-index: 99; }
+    [class^="stream-"] [class^="content-stream-"] [class^="content-hover-"] .hover-info-overlay .glyphicon {
+      margin: 10px;
+      padding-top: 10px; }
+    [class^="stream-"] [class^="content-stream-"] [class^="content-hover-"] .hover-info-overlay .viewers {
+      top: 0; }
+  [class^="stream-"] [class^="content-stream-"] [class^="content-hover-"] .glyphicon-play {
+    color: white;
+    font-size: 4em;
+    position: absolute;
+    left: 170px;
+    top: 80px;
+    z-index: 999;
+    animation-name: play-button-scale-down;
+    animation-duration: 500ms;
+    animation-iteration-count: 1; }
+    [class^="stream-"] [class^="content-stream-"] [class^="content-hover-"] .glyphicon-play:hover {
+      animation-name: play-button-scale-up;
       animation-duration: 500ms;
-      animation-iteration-count: 1; }
-      [class^="stream-"] [class^="content-stream-"] .glyphicon-play:hover {
-        animation-name: play-button-scale-up;
-        animation-duration: 500ms;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-        cursor: pointer; }
-    [class^="stream-"] [class^="content-stream-"] .hover-info-overlay {
-      display: none;
-      width: 400px;
-      height: 225px;
-      background: rgba(0, 0, 0, 0.7);
-      position: absolute;
-      top: 0;
-      left: 0;
-      text-align: center;
-      color: white;
-      font: "Lato", sans-serif;
-      padding: 0px 50px;
-      font-size: 1.5em;
-      font-weight: 400; }
-      [class^="stream-"] [class^="content-stream-"] .hover-info-overlay .status {
-        margin-top: 20px; }
-      [class^="stream-"] [class^="content-stream-"] .hover-info-overlay .viewers {
-        position: absolute;
-        bottom: 10px;
-        left: 80px; }
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      cursor: pointer; }
 
-/* hover text more info */
-[class^="content-stream-"]:hover .hover-info-overlay {
-  display: block; }
+[class^="content-stream-"]:hover [class^="content-hover-"] {
+  display: block;
+  animation-name: hover-fade-in;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards; }
 
+@keyframes hover-fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 0.4; } }
 @keyframes play-button-scale-up {
   0% {
-    transform: scale(1);
-    opacity: 1; }
+    opacity: 1;
+    transform: scale(1); }
   100% {
-    transform: scale(1.5);
-    opacity: 0.3; } }
+    opacity: 0.5;
+    transform: scale(1.5); } }
 @keyframes play-button-scale-down {
   0% {
-    transform: scale(1.5);
-    opacity: 0.3; }
+    opacity: 0.5;
+    transform: scale(1.5); }
   100% {
-    transform: scale(1);
-    opacity: 1; } }
+    opacity: 1;
+    transform: scale(1); } }
 
 /*# sourceMappingURL=styles.css.map */

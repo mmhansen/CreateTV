@@ -1,15 +1,5 @@
 
-$green50: #E8F5E9;
-$green100: #C8E6C9;
-$green200: #A5D6A7;
-$green300: #81C784;
-$green400: #66BB6A;
-$green500: #4CAF50;
-$green600: #43A047;
-$green700: #388E3C;
-$green800: #2E7D32;
-$green900: #1B5E20;
-
+$header-bg: #00BCD4;
 
 @font-face {
 	font-family: "Twitch";
@@ -18,44 +8,39 @@ $green900: #1B5E20;
 		
 
 // general styling
-html, body {
+html, body, div {
 	margin: 0;
 	padding: 0;
 }
+body {
+	background: #FAFAFA;
+}
 
 // stying for title
-h1 {
-	font-family: sans-serif;
-
-	font-family: "Twitch";
-	
-	font-size: 4em;
-}
-
-
-body {
-	background: $green50;
-}
-
-// Styles for Search bar
-
-.search-div {
-	text-align: center;
+.header {
+	background: $header-bg;
+	margin: 0;
+	padding: 0;
 	margin-bottom: 20px;
 }
 
-input {
-	margin: 10px;
-	width: 450px;
-	padding: 10px;
+h1 {
+	margin: 0;
+
+	font-family: "Lato";
+	font-weight: 400;
+	font-size: 4em;
+	color: white;
+	padding: 40px;
 }
 
-// styles for stream display
+
+
+// styles for stream display landing
 
 
 
 html {
-  margin: 20px;
   text-align: center;
 }
 
@@ -64,6 +49,10 @@ html {
   margin: 20px 20px;
   display: inline-block;
 
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.3), 
+       		  -3px 2px 15px rgba(0,0,0,0.3), 
+        	  -3px 2px 15px rgba(0,0,0,0.3);
+
   	// main content div
 	& [class^="content-stream-"] {
 	  padding: 0;
@@ -71,7 +60,6 @@ html {
 	  
 	  position: relative;
 
-	  border: 0px solid black;
   
 	  width: 400px;
 	  height: 225px;
@@ -85,8 +73,8 @@ html {
 
 		// stream name location
 		& [class^="name-content-stream-"] {
-		    background: black;
-		    opacity: 0.6;
+		    background: #00838F;
+		    opacity: 1;
 		    padding: 5px;
 		  
 		  
@@ -105,40 +93,31 @@ html {
 				letter-spacing: 0.07em;
 		  	}
 		}
+	}
+}
 
-		// play button location
-		& .glyphicon-play {
-		    color: white;
-		  
-		    font-size: 4em;
-		    position: absolute;
-		  
-		    left: 165px;
-		    top: 80px;
-		    z-index: 99;
 
-		    animation-name: play-button-scale-down;
-			animation-duration: 500ms;
-			animation-iteration-count: 1;
 
-		    // play button hover animation
-		    &:hover {
-				animation-name: play-button-scale-up;
-				animation-duration: 500ms;
-				animation-iteration-count: 1;
-				animation-fill-mode: forwards;
-				  
-				cursor: pointer;
-		    }
-		}
+// styles for stream display hover 
+[class^="stream-"] {
+	& [class^="content-stream-"] {
+		& [class^="content-hover-"] {
 
-		// hover info overlay location
-		& .hover-info-overlay {
-			  display: none;
-			  
+			display: none;
+
+			position: absolute;
+			bottom: 0;
+
+			width: 400px;
+	  		height: 225px;
+	  		background: rgba(0,0,0,1);
+
+	  		// info hover
+	  		& .hover-info-overlay {
+			 
 			  width: 400px;
 			  height: 225px;
-			  background: rgba(0,0,0,0.7);
+			  background: rgba(0,0,0,1);
 			  
 			  position: absolute;
 			  top: 0;
@@ -148,55 +127,90 @@ html {
 			  color: white;
 			  font: "Lato", sans-serif;
 			  padding: 0px 50px;
-			  font-size: 1.5em;
+			  font-size: 3.0em;
 			  font-weight: 400;
+			  z-index: 99;
 
-			& .status {
-			    margin-top: 20px;
+				& .glyphicon {
+					margin: 10px;
+					padding-top: 10px;
+				}
+
+				& .viewers {
+					top: 0;
+				}
 			}
 
-			& .viewers {
-				position: absolute;
-				bottom: 10px;
-				left: 80px;
+	  		// play button location
+			& .glyphicon-play {
+			    color: white;
+			  
+			    font-size: 4em;
+			    position: absolute;
+			  
+			    left: 170px;
+			    top: 80px;
+			    z-index: 999;
+
+			    animation-name: play-button-scale-down;
+				animation-duration: 500ms;
+				animation-iteration-count: 1;
+
+		    // play button hover animation
+			    &:hover {
+					animation-name: play-button-scale-up;
+					animation-duration: 500ms;
+					animation-iteration-count: 1;
+					animation-fill-mode: forwards;
+					  
+					cursor: pointer;
+			    }
 			}
-		}	
+		}
 	}
 }
 
 
-
-
-
-
-
-/* hover text more info */
-
 [class^="content-stream-"]:hover {
-  & .hover-info-overlay {
+  & [class^="content-hover-"] {
     	display: block;
+    	animation-name: hover-fade-in;
+		animation-duration: 500ms;
+		animation-iteration-count: 1;
+		animation-fill-mode: forwards;
     }
 }
 
 
-@keyframes play-button-scale-up {
+
+@keyframes hover-fade-in {
   0%{
-    transform: scale(1);
-    opacity: 1;
+    opacity: 0;
   } 
   100%{
-    transform: scale(1.5);
-    opacity: 0.3;
+    opacity: 0.4;
   }
 }
 
-@keyframes play-button-scale-down {
-  0%{
-    transform: scale(1.5);
-    opacity: 0.3;
-  } 
-  100%{
-    transform: scale(1);
-    opacity: 1;
-  }
+@keyframes play-button-scale-up {
+	0%{
+		opacity: 1;
+		transform: scale(1);
+	}
+	100%{
+		opacity: 0.5;
+		transform: scale(1.5);
+	}
 }
+
+@keyframes play-button-scale-down {
+	0%{
+		opacity: 0.5;
+		transform: scale(1.5);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
